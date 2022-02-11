@@ -1,3 +1,7 @@
+# **_ 이 깃은 노마드코더 강의 보고 하는 공부 입니다. _**
+
+---
+
 # CSS
 
 1. css module
@@ -86,6 +90,7 @@ default Theme Color
 - useRouteMatch
 - useRecoilValue
 - useSetRecoilState
+- useForm
 
 ## useLocation
 
@@ -183,3 +188,70 @@ Helmet은 그저 head로 가는 direct link일 뿐
 ### Recoil은 ReactJS에서 사용할 수 있는 state management library
 
 npm i recoil
+
+---
+
+## (React Hook Form)[https://react-hook-form.com/]
+
+큰 form이나 form validation(검증)이 많을 때에 사용하면 좋다.
+
+예를 들어, toDo를 받을 때 글자의 길이가 10보다 작으면 Error가 일어난다고 해보자.
+
+```ts
+// ToDoList.tsx
+function ToDoList() {
+  const [toDo, setToDo] = useState("");
+  const [toDoError, setToDoError] = useState("");
+  const onChange = (event: React.FormEvent<HTMLInputElement>) => {
+    const {
+      currentTarget: { value },
+    } = event;
+    setToDoError(""); /* todo를 고치면 바로 Error를 지워줌 */
+    setToDo(value);
+  };
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (toDo.length < 10) {
+      return setToDoError("To do should be longer");
+    }
+    console.log("submit");
+  };
+
+  return (
+    <div>
+      <form onSubmit={onSubmit}>
+        <input onChange={onChange} value={toDo} placeholder="Write a to do" />
+        <button>Add</button>
+        {toDoError !== "" ? toDoError : null}
+      </form>
+    </div>
+  );
+}
+```
+
+- react-hook-form 설치
+
+npm install react-hook-form
+
+useForm()에 register 함수가 있고 그 함수는 onChange event handler가 필요없다.
+register function 안에는 name,onChange,onblur,ref return된다.
+
+watch function : watch는 form의 입력값들의 변화를 관찰 할 수 있게 해주는 function.
+
+handleSubmit(onVaild, onInVaild)
+
+```ts
+<input {...register("toDo", { required: true })} placeholder="Write a to do" />
+```
+
+required를 register 함수에 넣는 이유는 html에서 보호를 받고 있어서 input에 넣어줘도 되지만
+소스코드를 직접 브라우저에서 수정하거나, 지원하지 않는 모바일에선 보호되지 않기 때문에
+register 함수에 넣어준다.
+또, register에 넣어 주면 error가 있는 항목으로 커서를 자동으로 이동시켜준다.
+
+정규식표현
+
+/^[A-Za-z0-9._%+-]+@naver.com/g<br>
+^: 문장의 시작 <br>
+[]: 문자셋 안의 아무 문자<br>
++: 하나 또는 많이<br>
