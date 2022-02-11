@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -53,6 +54,9 @@ const Img = styled.img`
 	margin-right: 10px;
 `;
 
+const ToggleBtn = styled.div`
+`;
+
 interface ICoin {
 	id: string,
 	name: string,
@@ -62,25 +66,20 @@ interface ICoin {
 	is_active: boolean,
 	type: string
 }
+
 function Coins(){
-	/* const [coins, setCoins] = useState<CoinInterface[]>([]);
-	const [loading, setLoading] = useState(true);
-	useEffect(()=> {
-		(
-			async () => {
-				const response = await fetch("https://api.coinpaprika.com/v1/coins");
-				const json = await response.json();
-				setCoins(json.slice(0, 100));
-				setLoading(false);
-			}
-		)();
-	}, []); */
 	const { isLoading, data } = useQuery<ICoin[]>("allCoins", fetchCoins);
 	return (
 		<Container>
+				<Helmet>
+				<title>코인</title>
+			</Helmet>
 			<Header>
 				<Title>코인</Title>
 			</Header>
+			<ToggleBtn>
+				
+			</ToggleBtn>
 			{ isLoading ? 
 			<Loader>Loading...</Loader>
 			: (

@@ -1,12 +1,19 @@
-import { useEffect, useState } from "react";
 import { Route, Switch, useLocation, useParams, useRouteMatch } from "react-router";
 import styled from "styled-components";
 import Price from "./Price";
 import Chart from "./Chart";
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
+import { Helmet } from "react-helmet";
 import { fetchCoinsInfo, fetchCoinsTickers } from "../api";
 
+const BackBtn = styled.button`
+	margin-bottom: 20px;
+	margin-left: 2px;
+	text-transform: uppercase;
+	background-color: ${(props) => props.theme.bgColor};
+	color: ${(props) => props.theme.textColor};
+`;
 
 const Container = styled.div`
 	padding: 0 20px;
@@ -148,16 +155,22 @@ function Coin(){
 	const priceMatch = useRouteMatch("/:coinId/price");
 	const chartMatch = useRouteMatch("/:coinId/chart");
 
-	const { isLoading: infoLoading, data: infoData } = useQuery<InfoData>(["info", coinId], () => fetchCoinsInfo(coinId));
+	const { isLoading: infoLoading, data: infoData } = useQuery<InfoData>(["info", coinId], () => fetchCoinsInfo(coinId), { refetchInterval: 5000 });
 	const { isLoading: tickersLoading, data: tickersData } = useQuery<PriceData>(["ticekers", coinId], () => fetchCoinsTickers(coinId));
 
 	const loading = infoLoading || tickersLoading;
 
 	return (
 		<Container>
+			<Helmet>
+				<title>{ state?.name ? state.name : loading ? "Loading..." : infoData?.name }</title>
+			</Helmet>
 			<Header>
 				<Title>{ state?.name ? state.name : loading ? "Loading..." : infoData?.name }</Title>
 			</Header>
+			<Link to={{pathname: `/`}}>
+				<BackBtn>List</BackBtn>
+			</Link>
 			{loading ? 
 			<Loader>Loading...</Loader>
 			: (
@@ -172,8 +185,8 @@ function Coin(){
 							<span>{infoData?.symbol}</span>
 						</OverviewItem>
 						<OverviewItem>
-							<span>Open Source:</span>
-							<span>{infoData?.open_source ? "Yes" : "No"}</span>
+							<span>Price:</span>
+							<span>${tickersData?.quotes.USD.price.toFixed(3)}</span>
 						</OverviewItem>
 					</Overview>
 					<Description>
@@ -200,10 +213,10 @@ function Coin(){
 
 					<Switch>
 						<Route path={`/:coinId/price`}>
-							<Price />
+							<Price coinId={coinId}/>
 						</Route>
 						<Route path={`/:coinId/chart`}>
-							<Chart />
+							<Chart coinId={coinId}/>
 						</Route>
 					</Switch>
 				</>

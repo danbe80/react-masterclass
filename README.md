@@ -1,70 +1,175 @@
-# Getting Started with Create React App
+# CSS
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. css module
+2. style inline
+3. react-reset
+4. createGlobalStyle 📌
 
-## Available Scripts
+```ts
+const GlobalStyle = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
 
-In the project directory, you can run:
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  background-color: ${(props) => props.theme.bgColor};
+  color: ${(props) => props.theme.textColor};
+}
+a{
+  text-decoration: none;
+	color: inherit;
+}
+`;
+```
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+default Theme Color
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- background-color : #2f3640
+- text-color : #f5f6fa
+- accent-color : #12CBC4
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# use React Hook
 
-### `npm run build`
+- useState
+- useEffect
+- useParmas
+- useLocation
+- useRouteMatch
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## useLocation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+useLocation hooks는 사용자가 현재 머물러 있는 페이지에 대한 정보를 알려주는 hooks이다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Nested Routes -> routes 안에 routes
 
-### `npm run eject`
+## useParams
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+URL에서 변수의 정보를 가져다 주는 hooks
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## useRouteMatch
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+특정한 URL에 있는지의 여부를 알려주는 hooks
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## [react-Query](https://react-query.tanstack.com/)
 
-## Learn More
+[React Query](https://react-query.tanstack.com/reference/useQuery#_top)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+React 애플리케이션에서 서버 state를 fetching, caching, synchronizing, updating 할 수 있도록 도와주는 라이브러리
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[Qeury Key](https://react-query.tanstack.com/guides/query-keys)
 
-### Code Splitting
+React Query는 쿼리 키를 기반으로 쿼리 캐싱을 관리
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+npm i react-query
 
-### Analyzing the Bundle Size
+1. queryClient 생성
+2. QueryClientProvider 생성 -> ThemeProvider과 같은 맥락
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+react-query도 같은 맥락으로 queryClientProvider 안에 있는 모든 것은 queryClient에 접근 가능.
 
-### Making a Progressive Web App
+react-query가 우리에게 주는 도움 -> 스스로 실행하고 있었던 로직들을 축약해줌
+예를 들어,
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```ts
+// Coins.tsx
+const [coins, setCoins] = useState<CoinInterface[]>([]);
+const [loading, setLoading] = useState(true);
 
-### Advanced Configuration
+useEffect(() => {
+  (async () => {
+    const response = await (await fetch("URL")).json();
+    setCoins(json.slice(0, 100));
+    setLoading(false);
+  })();
+}, []);
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+state를 가지고 있는데, 하나는 데이터를 위한 State, 다른 하나는 loading을 위한 것 <br>
+데이터가 준비되면 우리는 데이터를 state에 집어 넣고 로딩을 false로 두었음 <br>
+우리가 해주던 위 과정을 **_ react query _** 가 자동으로 해줌.
 
-### Deployment
+### react qeury를 사용하기 위한 단계
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. fetch 함수 만들기
 
-### `npm run build` fails to minify
+- fetch 함수는 꼭 fetch promise를 return 해 줘야함
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+2. useQuery
+
+- useQuery는 2가지 argument를 필요로 함.
+
+  1.  첫 번째는 query keys -> query의 고유 식별자
+  2.  두 번째는 fetch함수
+  3.  선택적 object
+
+- useQuery가 return 하는 것 중 'isLoading'이라고 불리는 boolean값을 return
+
+react query가 fetcher 함수를 부르고,
+fetcher 함수가 loading 중이라면 react query가 알려줌(true or false)
+fetcher 함수가 끝나면 json을 data에 넣어줌
+
+한 번 fetch로 받아온 후 loading 페이지가 보이지 않는다 그 이유는?
+=> react query가 데이터를 캐시에 저장해두기 때문
+
+---
+
+## [ApexChart](https://apexcharts.com)
+
+npm i --save react-apexcharts apexcharts
+
+## [React-helmet](https://www.npmjs.com/package/react-helmet)
+
+npm i react-helmet
+
+npm i --save-dev @types/react-helmet
+
+Helmet은 그저 head로 가는 direct link일 뿐
