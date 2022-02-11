@@ -12,8 +12,9 @@ const CurrentPrices = styled.ul`
 const ItemPrice = styled.li`
 	display:flex;
 	justify-content: space-around;
-	background-color: rgba(0, 0, 0, .5);
-	color: ${(props) => props.theme.ContColor};
+	background-color: ${(props) => props.theme.bgColor};
+	border: 2px solid ${props => props.theme.textColor};
+	color: ${(props) => props.theme.textColor};
 	padding: 10px;
 	margin-bottom: 30px;
 	width: 100%;
