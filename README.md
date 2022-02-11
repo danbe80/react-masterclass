@@ -84,6 +84,8 @@ default Theme Color
 - useParmas
 - useLocation
 - useRouteMatch
+- useRecoilValue
+- useSetRecoilState
 
 ## useLocation
 
@@ -176,6 +178,8 @@ Helmet은 그저 head로 가는 direct link일 뿐
 
 ---
 
-## Recoil을 이용한 state management
+## [Recoil](https://recoiljs.org/ko/)을 이용한 state management
 
 ### Recoil은 ReactJS에서 사용할 수 있는 state management library
+
+npm i recoil
