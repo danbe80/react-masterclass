@@ -344,6 +344,6 @@ selector는 atom의 output을 변형시키는 도구
 - 열거형을 사용하면 의도를 문서화 하거나 구분되는 사례 집합을 쉽게 만들 수 있음
 - TypeScript는 숫자와 문자열 -기반 열거형을 제공
 
-code chranges
+code challenge
 
 - localstorage 저장, 삭제 기능

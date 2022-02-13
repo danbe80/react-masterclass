@@ -10,9 +10,16 @@ function CreateToDo(){
   const setToDos = useSetRecoilState(toDoState);
   const category = useRecoilValue(categoryState);
   const { register, handleSubmit, setValue } = useForm<IForm>();
+  
   const handleValid = ({toDo}:IForm) => {
-    setToDos(oldToDos => [{text: toDo,id: Date.now(), category}, ...oldToDos])
-    setValue("toDo", "");
+    setToDos(oldToDos => {
+      const allToDos = [...oldToDos, {id: Date.now(), text: toDo, category}];
+      const stringifiedAllToDos = JSON.stringify(allToDos);
+      localStorage.setItem("ToDos", stringifiedAllToDos);
+      return allToDos;
+    });
+    setValue("toDo", ""); // input창 비우기
+   
   }
   return (
     <form onSubmit={handleSubmit(handleValid)}>
