@@ -173,6 +173,8 @@ fetcher 함수가 끝나면 json을 data에 넣어줌
 
 npm i --save react-apexcharts apexcharts
 
+---
+
 ## [React-helmet](https://www.npmjs.com/package/react-helmet)
 
 npm i react-helmet
@@ -255,3 +257,93 @@ register 함수에 넣어준다.
 ^: 문장의 시작 <br>
 []: 문자셋 안의 아무 문자<br>
 +: 하나 또는 많이<br>
+
+## to Do 수정하기
+
+```
+[
+  {
+      "text": "5",
+      "id": 1644662620806,
+      "category": "TO_DO"
+  },
+  {
+      "text": "4",
+      "id": 1644662620267,
+      "category": "TO_DO"
+  },
+  {
+      "text": "3",  //수정할 부분
+      "id": 1644662619762,
+      "category": "TO_DO"
+  },
+  {
+      "text": "2",
+      "id": 1644662619258,
+      "category": "TO_DO"
+  },
+  {
+      "text": "1",
+      "id": 1644662618754,
+      "category": "TO_DO"
+  }
+]
+
+```
+
+1. find to do based on id = id로 to do를 찾아라 / to do의 index만 알면 된다
+   array안에 있는 object의 index를 찾는 방법을 알아라.
+2. new category로 새로운 to do를 만들기
+3. targetIndex에 있는 to do를 newToDo로 바꿔주면 됨.
+
+### 배열의 원소를 어떻게 교체하는지...
+
+- 원소를 교체하는 이유는 원소의 위치가 바뀌지 않길 바리기 때문
+
+1. food라는 배열이 있고 index가 1인 "mango"를 감으로 바꾸고 싶어한다.(순서가 중요!)
+   -> 망고를 지우고 감을 추가하는 것이 아닌 망고 자리를 감으로 교체하는 것!
+
+```ts
+const food = ["pizza", "mango", "kimchi", "kimbab"];
+```
+
+방법 1. tagetIndex
+
+```ts
+const target = 1;
+[...food.slice(0, target), "감", ...food.slice(target + 1)];
+//return => ["pizza", "감", "kimchi", "kimbab"]
+```
+
+방법 2. 배열을 두 부분으로 나누기
+
+```ts
+const front = ["pizza"];
+const back = ["kimchi", "kimbab"];
+const finalPart = [...front, "감", ...back]; // 새로운 배열로 return
+```
+
+## [Recoil Selectors](https://recoiljs.org/ko/docs/basic-tutorial/selectors/)
+
+- Selector는 derived state를 나타낸다.
+  -> derived state란? state를 입력 받아 그걸 변형해 반환하는 순수 함수를 거쳐 반환된 값
+
+selector는 atom의 output을 변형시키는 도구
+
+## useRecoilValue
+
+- atom이나 selector의 값만 반환 (오로지 값만)
+
+## useRecoilState
+
+- 값과 더불어서 modifier 함수도 제공 (value, modifier function)
+
+## [enum](https://www.typescriptlang.org/ko/docs/handbook/enums.html)
+
+- enum은 열거형으로 이름이 있는 상수들의 집합을 정의
+- 열거형을 사용하면 의도를 문서화 하거나 구분되는 사례 집합을 쉽게 만들 수 있음
+- TypeScript는 숫자와 문자열 -기반 열거형을 제공
+
+code chranges
+
+- localstorage 저장, 삭제 기능
