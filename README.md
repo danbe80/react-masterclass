@@ -336,7 +336,7 @@ selector는 atom의 output을 변형시키는 도구
 
 ## useRecoilState
 
-- 값과 더불어서 modifier 함수도 제공 (value, modifier function)
+- 값과 더불어서 (수정할) m odifier 함수도 제공 (value, modifier function)
 
 ## [enum](https://www.typescriptlang.org/ko/docs/handbook/enums.html)
 
@@ -347,3 +347,10 @@ selector는 atom의 output을 변형시키는 도구
 code challenge
 
 - localstorage 저장, 삭제 기능
+
+---
+
+# Kanban Application
+
+String에 '+'를 더해주면 Number가 된다.
+ex) +"1" -> number
