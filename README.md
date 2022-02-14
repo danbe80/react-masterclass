@@ -356,3 +356,7 @@ String에 '+'를 더해주면 Number가 된다.
 ex) +"1" -> number
 
 ## [react-beautiful-dnd](https://www.npmjs.com/package/react-beautiful-dnd)
+
+## react memo
+
+- component가 렌더링되지 말도록 하는 역할
