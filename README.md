@@ -360,3 +360,7 @@ ex) +"1" -> number
 ## react memo
 
 - component가 렌더링되지 말도록 하는 역할
+
+## reference
+
+- react코드를 이용해 HTML요소를 지정하고, 가져올 수 있는 방법
