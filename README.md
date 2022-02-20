@@ -364,3 +364,13 @@ ex) +"1" -> number
 ## reference
 
 - react코드를 이용해 HTML요소를 지정하고, 가져올 수 있는 방법
+
+## [Framer Motion](https://www.framer.com/motion/)
+
+- 애니메이션을 할 수 있는 라이브러리
+
+- Framer는 디자이너들을 위해 프로토타입, 소프트웨어 등을 만들어주는 회사다.
+
+---
+
+# Netflix clone

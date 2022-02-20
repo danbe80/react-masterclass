@@ -48,6 +48,8 @@ function App(){
         const destinationBoard = [...allBoards[destination.droppableId]];
         sourceBoard.splice(source.index, 1);
         destinationBoard.splice(destination?.index, 0, taskObj);
+        console.log({...allBoards, [source.droppableId]: sourceBoard,
+          [destination.droppableId]: destinationBoard});
         return {
           ...allBoards,
           [source.droppableId]: sourceBoard,

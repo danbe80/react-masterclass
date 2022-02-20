@@ -7,7 +7,7 @@ border-radius: 5px;
 margin-bottom: 5px;
 padding: 10px 10px;
 background-color: ${(props) => props.isDragging ? "#f6e58d" : props.theme.cardColor};
-box-shadow: ${props => props.isDragging ? "0 2px 5px rgba(0,0,0,.3)" : "none"};
+box-shadow: ${props => props.isDragging ? "0 2px 5px rgba(0,0,0,.3)" : "0 1px 5px rgba(0,0,0,.1)" };
 `
 
 interface IDragabbleCardProps{
