@@ -407,3 +407,7 @@ ex) +"1" -> number
 - 값이 바뀌어도 리랜더링하지 않는 특징을 가지고 있음
 
 ## [useTransform](https://www.framer.com/docs/motionvalue/##usetransform)
+
+## [AnimatePresence](https://www.framer.com/docs/animate-presence/)
+
+- AnimatePresence를 사용하면 React트리에서 컴포넌트가 제거될 때 제거되는 컴포넌트에 애니메이션 효과를 줄 수 있음
