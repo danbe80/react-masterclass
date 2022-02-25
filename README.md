@@ -411,3 +411,11 @@ ex) +"1" -> number
 ## [AnimatePresence](https://www.framer.com/docs/animate-presence/)
 
 - AnimatePresence를 사용하면 React트리에서 컴포넌트가 제거될 때 제거되는 컴포넌트에 애니메이션 효과를 줄 수 있음
+
+## [Syncing layout animations](https://www.framer.com/docs/animate-shared-layout/#syncing-layout-animations)
+
+-모션 컴포넌트의 layout prop은 레이아웃이 변할 때마다, 자동으로 애니메이션을 적용
+
+## [Animate between components](https://www.framer.com/docs/animate-shared-layout/#animate-between-components)
+
+-동일한 layoutId를 공유하는 컴포넌트 간에 애니메이션을 적용하는 데 사용
