@@ -365,12 +365,39 @@ ex) +"1" -> number
 
 - react코드를 이용해 HTML요소를 지정하고, 가져올 수 있는 방법
 
+---
+
+# Netflix clone
+
 ## [Framer Motion](https://www.framer.com/motion/)
 
 - 애니메이션을 할 수 있는 라이브러리
 
 - Framer는 디자이너들을 위해 프로토타입, 소프트웨어 등을 만들어주는 회사다.
 
----
+- div 태그를 이용해서 animation을 할 수 없다. -> <motion.div>를 사용해만 한다.
 
-# Netflix clone
+- styled-component에 motion을 사용하고 싶다면
+
+```ts
+  const 변수 = styled(motion.(html태그명))``;
+```
+
+- create-react-app의 version 4는 error를 일으킴 (5.ver 는 고쳐졌다고 함)
+  -> 해결하기 위해 [CRACO](https://github.com/gsoft-inc/craco)를 사용함
+
+  ```bash
+    npm install @craco/craco --save
+    touch craco.config.js // 윈도우라면 그냥 오른쪽 마우스 클릭으로 파일 만듬
+  ```
+
+### [CRACO](https://github.com/gsoft-inc/craco) : create-react-app의 설정사항을 Override 할 수 있게 함.
+
+- Create React App Configration Override
+
+- 현재 이 프로젝트는 create-react-app이 4버전으로 설치되었기 때문에 CRACO를 사용.
+- 5버전을 사용으로 프로젝트를 새로 만든다면 오류 없이 진행 가능
+
+```bash
+  npx create-react-app@5.0.0 my-app --template typescript
+```
