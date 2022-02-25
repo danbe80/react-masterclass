@@ -401,3 +401,9 @@ ex) +"1" -> number
 ```bash
   npx create-react-app@5.0.0 my-app --template typescript
 ```
+
+## MotionValue
+
+- 값이 바뀌어도 리랜더링하지 않는 특징을 가지고 있음
+
+## [useTransform](https://www.framer.com/docs/motionvalue/##usetransform)
