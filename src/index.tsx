@@ -1,9 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import { RecoilRoot } from 'recoil';
-import { ThemeProvider } from 'styled-components';
-import {darkTheme} from "./theme";
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import { RecoilRoot } from "recoil";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./theme";
 
 import { createGlobalStyle } from "styled-components";
 
@@ -62,7 +62,6 @@ table {
 body {
   font-weight: 300;
   font-family: 'Source Sans Pro', sans-serif;
-  background: linear-gradient(135deg,#6c5ce7,#a29bfe);
   color: #111;
   line-height: 1.2;
 }
@@ -72,17 +71,14 @@ a {
 }
 `;
 
-
-
 ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>
-      <ThemeProvider theme={darkTheme}>
+      <ThemeProvider theme={theme}>
         <GlobalStyle />
         <App />
       </ThemeProvider>
     </RecoilRoot>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-
