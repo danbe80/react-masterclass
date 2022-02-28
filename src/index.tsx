@@ -64,6 +64,7 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   color: #111;
   line-height: 1.2;
+  height: 200vh;
 }
 a {
   text-decoration:none;
