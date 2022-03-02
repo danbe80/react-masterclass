@@ -423,3 +423,9 @@ ex) +"1" -> number
 ## [TheMovieDB](https://www.themoviedb.org/)
 
 - 사용할 API
+
+```js
+const offset = 6;
+let page = 0;
+[1, 2, 3, ...18].slice(offset * page, offset * page + offset);
+```
