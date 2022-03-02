@@ -419,3 +419,7 @@ ex) +"1" -> number
 ## [Animate between components](https://www.framer.com/docs/animate-shared-layout/#animate-between-components)
 
 -동일한 layoutId를 공유하는 컴포넌트 간에 애니메이션을 적용하는 데 사용
+
+## [TheMovieDB](https://www.themoviedb.org/)
+
+- 사용할 API
